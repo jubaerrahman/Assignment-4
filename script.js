@@ -129,8 +129,28 @@ mainContainer.addEventListener('click',function(event){
 
    
 })
+function renderEmptySpace(){
+    filterSection.innerHTML = `<div class="flex flex-col items-center justify-center py-16">
+            <img src="./jobs.png" 
+                 class="w-24 mb-4 opacity-60">
+            <h3 class="text-xl font-semibold text-[#002C5C]">
+                No jobs Available
+            </h3>
+            <p class="text-sm text-gray-500 mt-2">
+                You haven't added any jobs in this category yet.
+            </p>
+        </div>
+`
+}
 function renderInterview(){
     filterSection.innerHTML = ''
+    
+    if (interviewList.length == 0) {
+        renderEmptySpace();
+        return;
+    }
+
+    
 
     for(let i of interviewList){
         let div = document.createElement('div')
@@ -169,6 +189,7 @@ function renderInterview(){
 
 function renderRejected(){
     filterSection.innerHTML = ''
+    
 
     for(let i of rejectedList){
         let div = document.createElement('div')
