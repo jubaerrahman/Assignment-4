@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="tailwind.init.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+</head>
+
+<body class="bg-[#f2f2f4]">
+
+    <header class="w-[80%] mx-auto space-y-4">
+        <h1 class=" text-4xl md:text-6xl font-bold text-black">Job Application Tracker</h1>
+        <div class="grid grid-cols-3 gap-4 md:gap-8">
+            <div
+                class="bg-white p-4 rounded-2xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110">
+                <p>Total</p>
+                <p id="total-count">0</p>
+            </div>
+            <div
+                class="bg-white p-4 rounded-2xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 ">
+                <p>Interview</p>
+                <p id="interview-count">0</p>
+            </div>
+            <div
+                class="bg-white p-4 rounded-2xl transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110">
+                <p>Rejected</p>
+                <p id="rejected-count">0</p>
+            </div>
+        </div>
+    </header>
+
+    <hr class="m-6">
+
+    <main class="w-[80%] mx-auto">
+        <div class="space-x-4"><button id="total-filter-btn"
+                class="bg-[#3B82F6] text-white px-5 py-2 rounded-3xl hover:cursor-pointer">All</button>
+            <button id="interview-filter-btn"
+                class="bg-white text-[#64748B] px-5 py-2 rounded-3xl hover:cursor-pointer">Interview</button>
+            <button id="rejected-filter-btn"
+                class="bg-white text-[#64748B] px-5 py-2 rounded-3xl hover:cursor-pointer">Rejected</button>
+        </div>
+
+    </main>
+
+    <section id="all-card" class="mx-auto w-[80%]">
+        <!-- Card 1 -->
+
+        <div class="card flex justify-between my-3 bg-white rounded-xl px-3 py-2">
+            <div>
+                <div>
+                    <p class="company-name text-[#002C5C] font-semibold text-[20px]">TechCorp Industries</p>
+                    <p class="position-name text-[#64748B] font-normal">Senior Software Engineer</p>
+                </div>
+
+                <div>
+                    <p class="place text-[#64748B] font-normal text-sm my-4">San Francisco, CA • Full-time • $130,000 -
+                        $175,000</p>
+                </div>
+
+                <div>
+                    <p class="status bg-[#EEF4FF] text-[#002C5C] inline p-2 rounded-1xl">Not Applied</p>
+                    <p class="notes my-3 text-[12px] ">We are looking for an experienced Frontend Developer to build
+                        scalable web applications using React and TypeScript. You will work with a talented team on
+                        cutting-edge projects.</p>
+
+                </div>
+
+                <div class="space-x-1.5">
+                    <button
+                        class="interview-btn text-lime-500 border-2 px-4 py-2 rounded-xl hover:cursor-pointer ">Interview</button>
+                    <button
+                        class="rejected-btn text-red-400 border-2 px-4 py-2 rounded-xl hover:cursor-pointer ">Rejected</button>
+                </div>
+            </div>
+            <div>
+                <button class="delete-btn border-2 p-2 rounded-4xl hover:cursor-pointer"><i
+                        class="fa-solid fa-trash-can"></i></button>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card flex justify-between my-3 bg-white rounded-xl px-3 py-2">
+            <div>
+                <div>
+                    <p class="company-name text-[#002C5C] font-semibold text-[20px]">GreenTech Solutions</p>
+                    <p class="position-name text-[#64748B] font-normal">Frontend Developer</p>
+                </div>
+
+                <div>
+                    <p class="place text-[#64748B] font-normal text-sm my-4">Remote • Full-time • $90,000 - $115,000</p>
+                </div>
+
+                <div>
+                    <p class="status bg-[#EEF4FF] text-[#002C5C] inline p-2 rounded-1xl">Not Applied</p>
+                    <p class="notes my-3 text-[12px]">Develop responsive web interfaces using React and Tailwind CSS.
+                        Collaborate with backend engineers to integrate REST APIs and optimize performance.</p>
+                </div>
+
+                <div class="space-x-1.5">
+                    <button
+                        class="interview-btn text-lime-500 border-2 px-4 py-2 rounded-xl hover:cursor-pointer">Interview</button>
+                    <button
+                        class="rejected-btn text-red-400 border-2 px-4 py-2 rounded-xl hover:cursor-pointer">Rejected</button>
+                </div>
+            </div>
+            <div>
+                <button class="delete-btn border-2 p-2 rounded-4xl hover:cursor-pointer"><i
+                        class="fa-solid fa-trash-can"></i></button>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card flex justify-between my-3 bg-white rounded-xl px-3 py-2">
+            <div>
+                <div>
+                    <p class="company-name text-[#002C5C] font-semibold text-[20px]">DataWave Analytics</p>
+                    <p class="position-name text-[#64748B] font-normal">Full Stack Developer</p>
+                </div>
+
+                <div>
+                    <p class="place text-[#64748B] font-normal text-sm my-4">New York, NY • Hybrid • $110,000 - $140,000
+                    </p>
+                </div>
+
+                <div>
+                    <p class="status bg-[#EEF4FF] text-[#002C5C] inline p-2 rounded-1xl">Not Applied</p>
+                    <p class="notes my-3 text-[12px]">Build scalable applications using Node.js and React. Design
+                        database schemas and implement secure authentication systems.</p>
+                </div>
+
+                <div class="space-x-1.5">
+                    <button
+                        class="interview-btn text-lime-500 border-2 px-4 py-2 rounded-xl hover:cursor-pointer">Interview</button>
+                    <button
+                        class="rejected-btn text-red-400 border-2 px-4 py-2 rounded-xl hover:cursor-pointer">Rejected</button>
+                </div>
+            </div>
+            <div>
+                <button class="delete-btn border-2 p-2 rounded-4xl hover:cursor-pointer"><i
+                        class="fa-solid fa-trash-can"></i></button>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card flex justify-between my-3 bg-white rounded-xl px-3 py-2">
+            <div>
+                <div>
+                    <p class="company-name text-[#002C5C] font-semibold text-[20px]">FinEdge Technologies</p>
+                    <p class="position-name text-[#64748B] font-normal">Backend Engineer</p>
+                </div>
+
+                <div>
+                    <p class="place text-[#64748B] font-normal text-sm my-4">Chicago, IL • Full-time • $105,000 -
+                        $135,000</p>
+                </div>
+
+                <div>
+                    <p class="status bg-[#EEF4FF] text-[#002C5C] inline p-2 rounded-1xl">Not Applied</p>
+                    <p class="notes my-3 text-[12px]">Develop secure APIs using Express.js and PostgreSQL. Optimize
+                        server performance and ensure system reliability.</p>
+                </div>
+
+                <div class="space-x-1.5">
+                    <button
+                        class="interview-btn text-lime-500 border-2 px-4 py-2 rounded-xl hover:cursor-pointer">Interview</button>
+                    <button
+                        class="rejected-btn text-red-400 border-2 px-4 py-2 rounded-xl hover:cursor-pointer">Rejected</button>
+                </div>
+            </div>
+            <div>
+                <button class="delete-btn border-2 p-2 rounded-4xl hover:cursor-pointer"><i
+                        class="fa-solid fa-trash-can"></i></button>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card flex justify-between my-3 bg-white rounded-xl px-3 py-2">
+            <div>
+                <div>
+                    <p class="company-name text-[#002C5C] font-semibold text-[20px]">CloudSync Systems</p>
+                    <p class="position-name text-[#64748B] font-normal">DevOps Engineer</p>
+                </div>
+
+                <div>
+                    <p class="place text-[#64748B] font-normal text-sm my-4">Austin, TX • Full-time • $115,000 -
+                        $145,000</p>
+                </div>
+
+                <div>
+                    <p class="status bg-[#EEF4FF] text-[#002C5C] inline p-2 rounded-1xl">Not Applied</p>
+                    <p class="notes my-3 text-[12px]">Manage CI/CD pipelines and automate cloud infrastructure using AWS
+                        and Docker. Monitor system performance and security.</p>
+                </div>
+
+                <div class="space-x-1.5">
+                    <button
+                        class="interview-btn text-lime-500 border-2 px-4 py-2 rounded-xl hover:cursor-pointer">Interview</button>
+                    <button
+                        class="rejected-btn text-red-400 border-2 px-4 py-2 rounded-xl hover:cursor-pointer">Rejected</button>
+                </div>
+            </div>
+            <div>
+                <button class="delete-btn border-2 p-2 rounded-4xl hover:cursor-pointer"><i
+                        class="fa-solid fa-trash-can"></i></button>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="card flex justify-between my-3 bg-white rounded-xl px-3 py-2">
+            <div>
+                <div>
+                    <p class="company-name text-[#002C5C] font-semibold text-[20px]">BrightAI Labs</p>
+                    <p class="position-name text-[#64748B] font-normal">Machine Learning Engineer</p>
+                </div>
+
+                <div>
+                    <p class="place text-[#64748B] font-normal text-sm my-4">Seattle, WA • Hybrid • $120,000 - $160,000
+                    </p>
+                </div>
+
+                <div>
+                    <p class="status bg-[#EEF4FF] text-[#002C5C] inline p-2 rounded-1xl">Not Applied</p>
+                    <p class="notes my-3 text-[12px]">Design and train ML models using Python and TensorFlow. Deploy
+                        models into production environments.</p>
+                </div>
+
+                <div class="space-x-1.5">
+                    <button
+                        class="interview-btn text-lime-500 border-2 px-4 py-2 rounded-xl hover:cursor-pointer">Interview</button>
+                    <button
+                        class="rejected-btn text-red-400 border-2 px-4 py-2 rounded-xl hover:cursor-pointer">Rejected</button>
+                </div>
+            </div>
+            <div>
+                <button class="delete-btn border-2 p-2 rounded-4xl hover:cursor-pointer"><i
+                        class="fa-solid fa-trash-can"></i></button>
+            </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="card flex justify-between my-3 bg-white rounded-xl px-3 py-2">
+            <div>
+                <div>
+                    <p class="company-name text-[#002C5C] font-semibold text-[20px]">HealthPlus Digital</p>
+                    <p class="position-name text-[#64748B] font-normal">UI/UX Designer</p>
+                </div>
+
+                <div>
+                    <p class="place text-[#64748B] font-normal text-sm my-4">Boston, MA • Full-time • $85,000 - $105,000
+                    </p>
+                </div>
+
+                <div>
+                    <p class="status bg-[#EEF4FF] text-[#002C5C] inline p-2 rounded-1xl">Not Applied</p>
+                    <p class="notes my-3 text-[12px]">Create intuitive user interfaces and conduct usability testing.
+                        Work closely with developers to ensure pixel-perfect implementation.</p>
+                </div>
+
+                <div class="space-x-1.5">
+                    <button
+                        class="interview-btn text-lime-500 border-2 px-4 py-2 rounded-xl hover:cursor-pointer">Interview</button>
+                    <button
+                        class="rejected-btn text-red-400 border-2 px-4 py-2 rounded-xl hover:cursor-pointer">Rejected</button>
+                </div>
+            </div>
+            <div>
+                <button class="delete-btn border-2 p-2 rounded-4xl hover:cursor-pointer"><i
+                        class="fa-solid fa-trash-can"></i></button>
+            </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="card flex justify-between my-3 bg-white rounded-xl px-3 py-2">
+            <div>
+                <div>
+                    <p class="company-name text-[#002C5C] font-semibold text-[20px]">CyberSecure Inc.</p>
+                    <p class="position-name text-[#64748B] font-normal">Security Engineer</p>
+                </div>
+
+                <div>
+                    <p class="place text-[#64748B] font-normal text-sm my-4">Washington, DC • Full-time • $125,000 -
+                        $155,000</p>
+                </div>
+
+                <div>
+                    <p class="status bg-[#EEF4FF] text-[#002C5C] inline p-2 rounded-1xl">Not Applied</p>
+                    <p class="notes my-3 text-[12px]">Conduct security audits and penetration testing. Implement
+                        security best practices across web and cloud platforms.</p>
+                </div>
+
+                <div class="space-x-1.5">
+                    <button
+                        class="interview-btn text-lime-500 border-2 px-4 py-2 rounded-xl hover:cursor-pointer">Interview</button>
+                    <button
+                        class="rejected-btn text-red-400 border-2 px-4 py-2 rounded-xl hover:cursor-pointer">Rejected</button>
+                </div>
+            </div>
+            <div>
+                <button class="delete-btn border-2 p-2 rounded-4xl hover:cursor-pointer"><i
+                        class="fa-solid fa-trash-can"></i></button>
+            </div>
+        </div>
+
+
+    </section>
+
+
+
+
+<script src="script.js"></script>
+</body>
+
+</html>
