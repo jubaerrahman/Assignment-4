@@ -189,7 +189,10 @@ function renderInterview(){
 
 function renderRejected(){
     filterSection.innerHTML = ''
-    
+    if (rejectedList.length === 0) {
+        renderEmptySpace();
+        return;
+    }
 
     for(let i of rejectedList){
         let div = document.createElement('div')
