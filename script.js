@@ -113,6 +113,18 @@ mainContainer.addEventListener('click',function(event){
     // renderRejected()
     calculateCount()
     }
+    else if(event.target.classList.contains('delete-btn')) {
+        const parentNode = event.target.parentNode.parentNode;
+        parentNode.remove()
+        calculateCount()
+
+    }
+     else if(event.target.classList.contains('fa-trash-can')) {
+        const parentNode = event.target.parentNode.parentNode.parentNode;
+        parentNode.remove()
+        calculateCount()
+
+    }
 
 
    
