@@ -246,6 +246,7 @@ function renderInterview() {
 
     filterSection.appendChild(div);
   }
+  updateStatusColors();
 }
 
 function renderRejected() {
@@ -297,6 +298,7 @@ function renderRejected() {
 
     filterSection.appendChild(div);
   }
+  updateStatusColors();
 }
 
 function updateStatusColors(){
