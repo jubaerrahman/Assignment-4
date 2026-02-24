@@ -77,10 +77,19 @@ mainContainer.addEventListener("click", function (event) {
     rejectedList = rejectedList.filter(
       (item) => item.companyName != cardInfo.companyName,
     );
+    let allCard = cardContainer.children
+    for(let c of allCard){
+        let name = c.querySelector('.company-name').innerText
+        if(name == companyName){
+            c.querySelector('.status').innerText = 'Interviewing'
+            break
+        }
+    }
     if (currentStatus == "rejected-filter-btn") {
       renderRejected();
     }
     // renderInterview()
+    updateStatusColors()
     calculateCount();
   } else if (event.target.classList.contains("rejected-btn")) {
     const parentNode = event.target.parentNode.parentNode;
@@ -111,27 +120,24 @@ mainContainer.addEventListener("click", function (event) {
     interviewList = interviewList.filter(
       (item) => item.companyName != cardInfo.companyName,
     );
+    let allCard = cardContainer.children
+    for(let c of allCard){
+        let name = c.querySelector('.company-name').innerText
+        if(name == companyName){
+            c.querySelector('.status').innerText = 'Rejected'
+            break
+        }
+    }
 
     if (currentStatus == "interview-filter-btn") {
       renderInterview();
     }
     // renderRejected()
+    updateStatusColors()
     calculateCount();
   } else if (event.target.classList.contains("delete-btn")) {
     const parentNode = event.target.parentNode.parentNode;
-    parentNode.remove();
-    const companyName = parentNode.querySelector(".company-name").innerText;
-
-    interviewList = interviewList.filter(
-      (item) => item.companyName !== companyName,
-    );
-    rejectedList = rejectedList.filter(
-      (item) => item.companyName !== companyName,
-    );
     
-    calculateCount();
-  } else if (event.target.classList.contains("fa-trash-can")) {
-    const parentNode = event.target.parentNode.parentNode.parentNode;
     const companyName = parentNode.querySelector(".company-name").innerText;
 
     interviewList = interviewList.filter(
@@ -139,10 +145,43 @@ mainContainer.addEventListener("click", function (event) {
     );
     rejectedList = rejectedList.filter(
       (item) => item.companyName !== companyName,
-    );
+    )
+    let allCard = cardContainer.children
+    for(let c of allCard){
+        let name = c.querySelector('.company-name').innerText
+        if(name == companyName){
+            c.querySelector('.status').innerText = 'Not Applied'
+            break
+        }
+    }
     parentNode.remove();
+    updateStatusColors()
     calculateCount();
-  }
+}
+   else if (event.target.classList.contains("fa-trash-can")) {
+    const parentNode = event.target.parentNode.parentNode.parentNode;
+    
+    const companyName = parentNode.querySelector(".company-name").innerText;
+
+    interviewList = interviewList.filter(
+      (item) => item.companyName !== companyName,
+    );
+    rejectedList = rejectedList.filter(
+      (item) => item.companyName !== companyName,
+    )
+    let allCard = cardContainer.children
+    for(let c of allCard){
+        let name = c.querySelector('.company-name').innerText
+        if(name == companyName){
+            c.querySelector('.status').innerText = 'Not Applied'
+            break
+        }
+    }
+    parentNode.remove();
+    updateStatusColors()
+    calculateCount();}
+    
+    
 });
 function renderEmptySpace() {
   filterSection.innerHTML = `<div class="flex flex-col items-center justify-center py-16">
@@ -259,4 +298,29 @@ function renderRejected() {
     filterSection.appendChild(div);
   }
 }
+
+function updateStatusColors(){
+    let allCard = document.querySelectorAll('.card')
+    for(let c of allCard){
+        let statusColor = c.querySelector('.status');
+        let statusText = statusColor.innerText
+
+        statusColor.classList.remove('bg-[#EEF4FF]',
+            'bg-green-100',
+            'bg-red-100',
+            'text-[#002C5C]',
+            'text-green-700',
+            'text-red-700')
+        if(statusText == 'Not Applied'){
+            statusColor.classList.add('bg-[#EEF4FF]', 'text-[#002C5C]')
+
+        }
+        else if(statusText == 'Interviewing'){
+            statusColor.classList.add('bg-green-100', 'text-green-700')
+        }
+        else if(statusText == 'Rejected'){
+            statusColor.classList.add('bg-red-100', 'text-red-700')
+        }
+    }
+}updateStatusColors()
 calculateCount();
